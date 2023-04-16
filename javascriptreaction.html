@@ -10,7 +10,7 @@
             width: 100px;
             height: 100px;
             background-color: red;
-            /* display: none; */
+            display: none;
             position: relative;
         }
     </style>
@@ -25,6 +25,9 @@
         <span id="besttime"></span>
     </p>
     <script>
+        var starttime;
+        //assume best time is 5 seconds
+        var bestime=5000;
         //start with a random delay
         randomDelay();
         //A shape will appear after a random amount of time
@@ -37,6 +40,7 @@
             //Start the timer once the shape appears
         
             starttime = new Date().getTime();
+            //ad top and left margin with two random numbers
         }
 
         //make the shape disappear after a random amount of time
@@ -45,6 +49,16 @@
             //and appear again
             randomDelay();
             //end the timer
+            var endtime=new Date().getTime();
+            //find the difference
+            var timeelapsed=endtime-starttime;
+            document.getElementById("onetime").innerHTML=timeelapsed / 1000+"seconds";
+            if (timeelapsed<besttime){
+                besttime=timeelapsed;
+                document.getElementById("bestime").innerHTML=
+                    besttime / 100+"seconds";
+            }
+            
         }
 
     </script>
