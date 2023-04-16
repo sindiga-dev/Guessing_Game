@@ -10,13 +10,43 @@
             width: 100px;
             height: 100px;
             background-color: red;
-            display: none;
+            /* display: none; */
             position: relative;
         }
     </style>
 </head>
 <body>
-    
+    <h1>Javascript Reaction Game</h1>
+    <p>Time between the shape appears and dissapears:
+        <span id="onetime"></span>
+    </p>
+    <div id="shape"></div>
+    <p>Your best record this session:
+        <span id="besttime"></span>
+    </p>
+    <script>
+        //start with a random delay
+        randomDelay();
+        //A shape will appear after a random amount of time
+        function randomDelay(){
+            setTime(displayShape, Math.random()*5000);
+        }
+        //display function
+        function displayshape(){
+            document.getElementById("shape").style.display = "block";
+            //start the timer
+            start = new Date().getTime();
+        }
+
+        //make the shape disappear after a random amount of time
+        document.getElementById("shape").onclick=function(){
+            document.getElementById("shape").style.display = "none";
+            //and appear again
+            randomDelay();
+        }
+
+    </script>
+
     
 </body>
 </html>
